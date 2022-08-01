@@ -1,0 +1,5 @@
+medel_path: /home/zgq/Documents/c++/darknet
+yoloModelWeights: /yolov4.weights
+yoloclassfile: /data/coco.names
+yoloModelConfiguration: /cfg/yolov4.cfg
+is_gpu: true

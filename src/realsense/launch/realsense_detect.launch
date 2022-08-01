@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="is_GPU" default="true"/>
+    <node pkg="realsense" type="realsense_node" name="realsense_node">
+        <param name="isGpu" value="$(arg is_GPU)"/>
+        
+    </node>
+</launch>
