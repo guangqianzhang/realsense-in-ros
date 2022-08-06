@@ -64,51 +64,50 @@ namespace vision_detection
         // ros::spin();
     }
     void yolo_plug_in::image_cb(const sensor_msgs::Image::ConstPtr &img)
-	{
+    {
 
-// auto time = img->header.stamp;
-		cv_bridge::CvImagePtr cv_ptr;
-		try
-		{
-			cv_ptr = cv_bridge::toCvCopy(img, "bgr8");
-		}
-		catch (cv_bridge::Exception &e)
-		{
-			ROS_INFO( "cv_bridge Copy failed!");
-			return;
-		}
-		cv::Mat raw_img = cv_ptr->image;
+        // auto time = img->header.stamp;
+        cv_bridge::CvImagePtr cv_ptr;
+        try
+        {
+            cv_ptr = cv_bridge::toCvCopy(img, "bgr8");
+        }
+        catch (cv_bridge::Exception &e)
+        {
+            ROS_INFO("cv_bridge Copy failed!");
+            return;
+        }
+        cv::Mat raw_img = cv_ptr->image;
 
-		// std::cout << "have done detect image! spend time" << spend_time * 1000 << "ms" << std::endl;
-		std::vector<YoloDetSt> yoloRet;
+        // std::cout << "have done detect image! spend time" << spend_time * 1000 << "ms" << std::endl;
+        std::vector<YoloDetSt> yoloRet;
         cv::Mat current_frame;
-		current_frame=yolo_->detect(raw_img, yoloRet);
-		ROS_INFO("detect done!");
-		// ros::Time time = ros::Time::now();
-		cv_ptr->encoding = "bgr8";
-		cv_ptr->header.stamp = img->header.stamp;
-		cv_ptr->header.frame_id = img->header.frame_id;
-		cv_ptr->image = current_frame;
-		vision_detect_img_pub_.publish(cv_ptr->toImageMsg());
-		sensor_msgs::Image::ConstPtr  image=cv_ptr->toImageMsg();
-		rockauto_msgs::ImageObj imagObj;
-			imagObj.header = img->header;
-			imagObj.roi_image=*image;
-			
-	for (auto it = yoloRet.begin(); it != yoloRet.end(); ++it)
-	{
-		rockauto_msgs::ImageRect imagrect;
-		imagObj.type.push_back((*it).label);
-		imagrect.x = (*it).rect.x;
-		imagrect.y = (*it).rect.y;
-		imagrect.height = (*it).rect.height;
-		imagrect.width = (*it).rect.width;
-		imagrect.score = (*it).confidences;
-		imagObj.obj.push_back(imagrect);
-	}
-	vision_detect_msg_pub_.publish(imagObj);
+        current_frame = yolo_->detect(raw_img, yoloRet);
+        ROS_INFO("detect done!");
+        // ros::Time time = ros::Time::now();
+        cv_ptr->encoding = "bgr8";
+        cv_ptr->header.stamp = img->header.stamp;
+        cv_ptr->header.frame_id = img->header.frame_id;
+        cv_ptr->image = current_frame;
+        vision_detect_img_pub_.publish(cv_ptr->toImageMsg());
+        sensor_msgs::Image::ConstPtr image = cv_ptr->toImageMsg();
+        rockauto_msgs::ImageObj imagObj;
+        imagObj.header = img->header;
+        imagObj.roi_image = *image;
 
-	}
+        for (auto it = yoloRet.begin(); it != yoloRet.end(); ++it)
+        {
+            rockauto_msgs::ImageRect imagrect;
+            imagObj.type.push_back((*it).label);
+            imagrect.x = (*it).rect.x;
+            imagrect.y = (*it).rect.y;
+            imagrect.height = (*it).rect.height;
+            imagrect.width = (*it).rect.width;
+            imagrect.score = (*it).confidences;
+            imagObj.obj.push_back(imagrect);
+        }
+        vision_detect_msg_pub_.publish(imagObj);
+    }
 
 }
 PLUGINLIB_EXPORT_CLASS(vision_detection::yolo_plug_in, nodelet::Nodelet)

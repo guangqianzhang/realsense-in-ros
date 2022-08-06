@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<launch>
+	<arg name="camera_topic_in" default="/realsense_img"/>
+	<arg name="camera_topic_out" default="/realsense_obj"/>
+
+	<arg name="binary_threshold" default="2"/>
+
+    <!-- $ rosrun nodelet nodelet manager __name:=sample_nodelet_manager -->
+	<node pkg="nodelet" type="nodelet" args="manager"
+    name="realsense_nodelet_manager" output="screen" />
+
+	<!-- $ rosrun nodelet nodelet load sample_nodelet/SampleNodeletClass sample_nodelet_manager __name:=SampleNodeletClass_loader-->
+	<!-- <node pkg="nodelet" type="nodelet" args="load realsense/yolo_detect realsense_nodelet_manager"
+    name="yolo_detection" output="screen">
+	<param name="camera_topic_in" value="$(arg camera_topic_in)"/> -->
+
+	<node pkg="nodelet" type="nodelet" args="load realsense/light realsense_nodelet_manager"
+    name="realsense_light" output="screen">
+	<param name="light_topic_in" value="$(arg camera_topic_out)"/>
+	<param name="binary_threshold" value="$(arg binary_threshold)"/>
+
+
+
+	</node>
+</launch>

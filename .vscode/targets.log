@@ -1,6 +1,4 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-make: *** No rule to make target 'all'.  Stop.
-
 # GNU Make 4.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2014 Free Software Foundation, Inc.
@@ -8,7 +6,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon Aug  1 10:10:56 2022
+# Make data base, printed on Sat Aug  6 08:19:48 2022
 
 # Variables
 
@@ -45,9 +43,9 @@ SHELL = /bin/sh
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
-_ = /usr/share/code/code
+_ = /usr/bin/dbus-update-activation-environment
 # environment
-JOURNAL_STREAM = 9:33737
+JOURNAL_STREAM = 9:35802
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # makefile
@@ -67,13 +65,13 @@ XDG_DATA_DIRS = /usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/d
 # environment
 ROS_ETC_DIR = /opt/ros/melodic/etc/ros
 # environment
-DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus,guid=777aae202052eb2421472dc762e72f91
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus,guid=b71799f4409d57bb4580d2f862eda512
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
 ROS_PACKAGE_PATH = /opt/ros/melodic/share
 # environment
-MANAGERPID = 1454
+MANAGERPID = 1500
 # environment
 ROS_PYTHON_VERSION = 2
 # environment
@@ -87,13 +85,15 @@ CLUTTER_IM_MODULE = xim
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
-PATH = /home/zgq/anaconda3/condabin:/opt/ros/melodic/bin:/home/zgq/anaconda3/bin:/home/zgq/anaconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/local/cuda/bin
+PATH = /home/zgq/anaconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 # environment
 XDG_SESSION_DESKTOP = ubuntu
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/qian:@/tmp/.ICE-unix/1652,unix/qian:/tmp/.ICE-unix/1652
+GJS_DEBUG_OUTPUT = stderr
+# environment
+SESSION_MANAGER = local/qian:@/tmp/.ICE-unix/1705,unix/qian:/tmp/.ICE-unix/1705
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -107,7 +107,7 @@ VSCODE_LOG_STACK = false
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = 8426a5163b224eb9884a906287cd0c78
+INVOCATION_ID = e138b15639e34fd68a3941507b20e95f
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -119,7 +119,7 @@ ROS_DISTRO = melodic
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 6949
+GIO_LAUNCHED_DESKTOP_FILE_PID = 4530
 # automatic
 %F = $(notdir $%)
 # environment
@@ -135,7 +135,7 @@ PWD = /home/zgq/Documents/depth_camera/catkin_RealSense
 # environment
 XDG_SEAT = seat0
 # environment
-SSH_AGENT_PID = 1730
+SSH_AGENT_PID = 1783
 # environment
 PKG_CONFIG_PATH = /opt/ros/melodic/lib/pkgconfig
 # environment
@@ -147,7 +147,7 @@ VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
 HOME = /home/zgq
 # environment
-LD_LIBRARY_PATH = /opt/MVS/lib/64:/opt/MVS/lib/32:/opt/MVS/lib/64:/opt/MVS/lib/32:/usr/local/cuda/lib64:/opt/ros/melodic/lib
+LD_LIBRARY_PATH = /opt/MVS/lib/64:/opt/MVS/lib/32:/opt/MVS/lib/64:/opt/MVS/lib/32:
 # environment
 LESSCLOSE = /usr/bin/lesspipe %s %s
 # environment
@@ -177,11 +177,11 @@ MAKECMDGOALS := all
 # environment
 QT_IM_MODULE = ibus
 # environment
-SHLVL = 1
+SHLVL = 0
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-762dbffe-c589-4c15-9e35-b6e3c1be4771.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-78d66c2d-1ba4-489e-8716-61521f0a0a8a.sock
 # environment
 XDG_SESSION_ID = 1
 # environment
@@ -227,6 +227,8 @@ GDK_BACKEND = x11
 # environment
 LC_PAPER = zh_CN.UTF-8
 # environment
+NO_AT_BRIDGE = 1
+# environment
 QT_ACCESSIBILITY = 1
 # environment
 CUDA_HOME = /usr/local/cuda
@@ -252,6 +254,8 @@ DBUS_STARTER_BUS_TYPE = session
 CONDA_PYTHON_EXE = /home/zgq/anaconda3/bin/python
 # environment
 QT4_IM_MODULE = xim
+# environment
+GJS_DEBUG_TOPICS = JS ERROR;JS LOG
 # automatic
 ^F = $(notdir $^)
 # default
@@ -273,16 +277,18 @@ LC_ADDRESS = zh_CN.UTF-8
 # environment
 LANG = C
 # environment
-VSCODE_PID = 6949
+VSCODE_PID = 3201
 # environment
-DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=777aae202052eb2421472dc762e72f91
+DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=b71799f4409d57bb4580d2f862eda512
 # environment
 MVCAM_SDK_PATH = /opt/MVS
 # environment
 _CE_CONDA = 
 # variable set hash-table stats:
+# Load=137/1024=13%, Rehash=0, Collisions=22/159=14%
  
-# Load=134/1024=13%, Rehash=0, Collisions=21/156=13%
+make: *** No rule to make target 'all'.  Stop.
+
 
 # Pattern-specific Variable Values
 
@@ -290,9 +296,9 @@ _CE_CONDA =
 
 # Directories
 
-# . (device 2055, inode 5259879): 7 files, no impossibilities.
+# . (device 2055, inode 5259879): 9 files, no impossibilities.
 
-# 7 files, no impossibilities in 1 directories.
+# 9 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -342,12 +348,12 @@ GNUmakefile:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 15 / storage = 132 B / avg = 8 B
-# current buf: size = 8162 B / used = 132 B / count = 15 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 17 / storage = 143 B / avg = 8 B
+# current buf: size = 8162 B / used = 143 B / count = 17 / avg = 8 B
 
-# strcache performance: lookups = 18 / hit rate = 16%
+# strcache performance: lookups = 20 / hit rate = 15%
 # hash-table stats:
-# Load=15/8192=0%, Rehash=0, Collisions=1/18=6%
-# Finished Make data base on Mon Aug  1 10:10:56 2022
+# Load=17/8192=0%, Rehash=0, Collisions=1/20=5%
+# Finished Make data base on Sat Aug  6 08:19:48 2022
 
  

@@ -1,0 +1,27 @@
+<class_libraries>
+
+<library path="lib/librs_yolo">
+    <class name="realsense/yolo_detect" type="Realsense::Yolo_plugin" base_class_type="nodelet::Nodelet">
+      <description>
+        A detection in realsense by yolo
+      </description>
+    </class>
+  </library>
+
+  <!-- <library path="lib/librs_track">
+    <class name="realsense/tracker" type="Realsense::tracker_plugin" base_class_type="nodelet::Nodelet">
+      <description>
+        A detection in realsense by yolo
+      </description>
+    </class>
+  </library> -->
+
+  <library path="lib/librs_light">
+    <class name="realsense/light" type="Realsense::light_plugin" base_class_type="nodelet::Nodelet">
+      <description>
+        A detection in realsense by light
+      </description>
+    </class>
+  </library>
+
+</class_libraries>

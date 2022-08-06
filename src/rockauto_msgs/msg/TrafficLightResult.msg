@@ -7,12 +7,12 @@ int32 light_id
 
 # The result as provided by the tlr nodes
 # Red and Yellow states are both treated as STOP
-# RED       = 0
-# YELLOW    = 0
-# GREEN     = 1
-# UNKNOWN   = 2
+# RED       = 1
+# YELLOW    = 2
+# GREEN     = 3
+# UNKNOWN   = 0
 int32 recognition_result
-
+float32 distance
 # This string is used by the Audio Player
 string recognition_result_str
 

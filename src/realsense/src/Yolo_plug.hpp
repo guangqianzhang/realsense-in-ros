@@ -10,8 +10,7 @@
 #include <cv_bridge/cv_bridge.h>
 #include <image_transport/image_transport.h>
 #include <sensor_msgs/Image.h>
-#include <rockauto_msgs/DetectedObjectArray.h>
-#include <rockauto_msgs/ImageObj.h>
+
 typedef struct YoloDetSt
 {
 	std::string label;
@@ -29,7 +28,7 @@ public:
 	Yolo();
 	~Yolo();
 	int loadModel();
-	cv::Mat detect(cv::Mat &img, std::vector<YoloDetSt> &yoloRet);
+	cv::Mat detect(cv::Mat img, std::vector<YoloDetSt> &yoloRet);
 	void drowBoxes(cv::Mat &img, std::vector<YoloDetSt> &yoloRet);
 
 private:
@@ -305,7 +304,7 @@ void Yolo::drowBoxes(cv::Mat &img, std::vector<YoloDetSt> &yoloRet)
 	}
 }
 
-cv::Mat Yolo::detect(cv::Mat &raw_img, std::vector<YoloDetSt> &yoloRet)
+cv::Mat Yolo::detect(cv::Mat raw_img, std::vector<YoloDetSt> &yoloRet)
 {
 	double start_time = (double)cv::getTickCount();
 	cv::Mat undistorted_image;

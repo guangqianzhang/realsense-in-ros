@@ -1,8 +1,16 @@
 <?xml version="1.0"?>
 <launch>
     <arg name="is_GPU" default="true"/>
+    <arg name="camera_topic" default="/realsense_img"/>
+    <arg name="ImageObj_topic" default="/realsense_obj"/>
+    <arg name="detection_flag" default="true"/>
+
     <node pkg="realsense" type="realsense_node" name="realsense_node">
         <param name="isGpu" value="$(arg is_GPU)"/>
+        <param name="camera_topic" value="$(arg camera_topic)"/>
+        <param name="detection_flag" value="$(arg detection_flag)"/>
+        <param name="ImageObj_topic" value="$(arg ImageObj_topic)"/>
         
     </node>
+    
 </launch>

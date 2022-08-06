@@ -12,6 +12,6 @@ int main(int argc, char *argv[])
 
     ROS_INFO("hello realsense!");
 
-    RealSense::realsense capture;
+    RealSense::realsense capture(private_nh);
     capture.detectByDnn();
 }

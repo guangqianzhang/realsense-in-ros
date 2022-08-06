@@ -150,10 +150,22 @@ include
 )
 
 ## Declare a C++ library
-# add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/realsense.cpp
-# )
-
+add_library(rs_yolo
+    src/detect/yolo_plugin.cpp
+)
+add_dependencies(rs_yolo ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(rs_yolo
+  ${catkin_LIBRARIES}
+  ${ALL_TARGET_LIBRARIES}
+)
+add_library(rs_light
+    src/light/light_plugin.cpp
+)
+add_dependencies(rs_light ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(rs_light
+  ${catkin_LIBRARIES}
+  ${ALL_TARGET_LIBRARIES}
+)
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
 ## either from message generation or dynamic reconfigure
